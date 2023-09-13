@@ -1,5 +1,5 @@
-const screenInput = document.querySelector(".calc-screen input")
-const screenCalc = document.querySelector(".calc-screen current-calc")
+const screenInput = document.querySelector(".calc-screen .input")
+const screenCalc = document.querySelector(".calc-screen .current-calc")
 
 // Update calaculation
 const updateCalculation = () => {
@@ -29,7 +29,9 @@ const operatorPress = (e) => {
 // On button press
 const btnPress = (e) => {
     // if number
-
+    if (e.className === "num"){
+        screenInput.textContent += e.id[3]
+    }
     // if operator
 
     // if equals
