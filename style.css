@@ -77,16 +77,18 @@
         margin: 4px;
         font-size: 1.5em;
         border-radius: 10px;
-
-        background-color: orangered;
-        color: antiquewhite;
         border-color: antiquewhite;
+        color: antiquewhite;
     }
 
     & .op {
         background-color: rgb(100, 20, 100);
     }
-
+    
+    & .num, #AC, #dec {
+        background-color: orangered;
+    }
+    
     & #eql {
         background-color: antiquewhite;
         color: orangered;

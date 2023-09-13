@@ -18,8 +18,12 @@ const decimal = () => {
 }
 
 // Check the operation
-const operatorPress = (e) => {
+const operatorPress = (id) => {
     // check operator is dec or ac
+    if (id === "AC") {
+        screenInput.textContent = ""
+        screenCalc.textContent = ""
+    }
     // check if there is an operator active already
         // replace
     // check if there is an operator in calculation already 
@@ -28,13 +32,18 @@ const operatorPress = (e) => {
 
 // On button press
 const btnPress = (e) => {
+    // if equals
+    if (e.id === "eql"){
+        operate()
+    }
     // if number
-    if (e.className === "num"){
+    else if (e.className === "num"){
         screenInput.textContent += e.id[3]
     }
     // if operator
-
-    // if equals
+    else if (e.className === "op") {
+        operatorPress(e.id)
+    }
 }
 
 const btns = document.querySelectorAll("button")
