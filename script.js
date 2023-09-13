@@ -1,6 +1,5 @@
 const screenInput = document.querySelector(".calc-screen input")
 const screenCalc = document.querySelector(".calc-screen current-calc")
-const calc = document.querySelector(".calc-buttons")
 
 // Update calaculation
 const updateCalculation = () => {
@@ -36,3 +35,7 @@ const btnPress = (e) => {
     // if equals
 }
 
+const btns = document.querySelectorAll("button")
+btns.forEach(btn => {
+    btn.addEventListener("click", e => btnPress(e.target))
+})
