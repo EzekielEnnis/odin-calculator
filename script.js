@@ -2,12 +2,12 @@ const screenInput = document.querySelector(".calc-screen .input")
 const screenCalc = document.querySelector(".calc-screen .current-calc")
 
 /*
-TODO - cant click operation if theres no number input
+//TODO - cant click operation if theres no number input
 TODO - rework update Calculation so it works after one operation is completed
 TODO - finish decimal funtion 
 TODO - check if operation is already active and calcualte before appplying
 */
-
+let totaled = false;
 const opIds = {
     "add": "+",
     "sub": "-",
@@ -43,8 +43,9 @@ const operate = () => {
     }
     // constrict SF 
     if (result.length > 10) result.toPrecision(9)
-    screenCalc.textContent = result
-    screenInput.textContent = ""
+    screenInput.textContent = result
+    screenCalc.textContent = "|"
+    totaled = true
 }
 
 // Convert to decimal
@@ -81,10 +82,13 @@ const btnPress = (e) => {
     // if number
     else if (e.className === "num"){
         if (opStore != "") updateCalculation(opIds[opStore]);
+        if (totaled) screenInput.textContent = ""
+        totaled = false
         screenInput.textContent += e.id[3]
     }
     // if operator
     else if (e.className === "op") {
+        totaled = false
         operatorPress(e.id)
     }
     else screenInput.textContent = "ERROR"
@@ -94,3 +98,16 @@ const btns = document.querySelectorAll("button")
 btns.forEach(btn => {
     btn.addEventListener("click", e => btnPress(e.target))
 })
+
+/*
+// Update calaculation
+const updateCalculation = (op) => {
+    // If theres been no number input return
+    if (screenInput.textContent === "") return;
+    // if there is a previous number already
+    if (screenCalc.textContent != "|") screenCalc.textContent += ` ${op}` 
+    else screenCalc.textContent = `${screenInput.textContent} ${op}`
+    screenInput.textContent = ""
+    opStore = ""
+}
+*/
