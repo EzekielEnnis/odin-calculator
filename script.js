@@ -4,8 +4,8 @@ const screenCalc = document.querySelector(".calc-screen .current-calc")
 /*
 //TODO - cant click operation if theres no number input
 //TODO - rework update Calculation so it works after one operation is completed
-TODO - finish decimal funtion 
-TODO - check if operation is already active and calcualte before appplying
+//TODO - finish decimal funtion 
+//TODO - check if operation is already active and calcualte before appplying
 */
 let totaled = false;
 const opIds = {
@@ -50,7 +50,7 @@ const operate = () => {
 
 // Convert to decimal
 const decimal = () => {
-
+    screenInput.textContent += "."
 }
 
 // Check the operation
