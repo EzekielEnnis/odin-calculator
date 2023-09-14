@@ -3,7 +3,7 @@ const screenCalc = document.querySelector(".calc-screen .current-calc")
 
 /*
 //TODO - cant click operation if theres no number input
-TODO - rework update Calculation so it works after one operation is completed
+//TODO - rework update Calculation so it works after one operation is completed
 TODO - finish decimal funtion 
 TODO - check if operation is already active and calcualte before appplying
 */
@@ -55,7 +55,7 @@ const decimal = () => {
 
 // Check the operation
 const operatorPress = (id) => {
-    const operators = ["=", "-", "x", "/"]
+    const operators = ["+", "-", "x", "/"]
     // check operator is dec or ac
     if (id === "AC") {
         screenInput.textContent = ""
@@ -68,9 +68,11 @@ const operatorPress = (id) => {
     }
 
     // check if there is an operator in calculation already 
+    if(operators.some(op => screenCalc.textContent.split(" ")[1] === op)){
+        operate()
+    }
     // operate then add clicked operation
     opStore = id
-    console.log(opStore)
 }
 
 // On button press
@@ -88,6 +90,7 @@ const btnPress = (e) => {
     }
     // if operator
     else if (e.className === "op") {
+        if (screenCalc.textContent === "|" && screenInput.textContent === "") return;
         totaled = false
         operatorPress(e.id)
     }
